@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vesper Arquitetura & Design - Escritório especializado em projetos residenciais, corporativos, acessibilidade, planejamento espacial e consultoria arquitetônica.">
+  <meta name="keywords" content="Arquitetura, Projetos Arquitetônicos, Consultoria Técnica, Acessibilidade, Responsabilidade Social, Vesper Arquitetura">
+  <meta name="author" content="Vesper Arquitetura & Design">
+  <title>Vesper Arquitetura & Design | Projetos & Consultoria Especializada</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- CANVAS DE ANIMAÇÃO DE FUNDO -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- HEADER DE NAVEGAÇÃO -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="#inicio" class="brand-logo" aria-label="Vesper Arquitetura Página Inicial">
+        <span class="logo-title">VESPER</span>
+        <span class="logo-subtitle">ARQUITETURA & DESIGN</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegação Principal">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="nav-link active">Início</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre Nós</a></li>
+          <li><a href="#equipe" class="nav-link">Equipe</a></li>
+          <li><a href="#servicos" class="nav-link">Serviços</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+          <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- BOTÃO TOGGLE DE TEMA CLARO / ESCURO (Visuais de Sol/Nuvem e Lua/Estrelas) -->
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Alternar Modo Escuro / Modo Claro" role="switch" aria-checked="false">
+          <span class="toggle-pill">
+            <span class="theme-icon light-visual">
+              <svg class="cloud-icon" viewBox="0 0 24 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.35 6.04C18.67 2.59 15.64 0 12 0C9.11 0 6.6 1.64 5.35 4.04C2.34 4.36 0 6.91 0 10C0 13.31 2.69 16 6 16H19C21.76 16 24 13.76 24 11C24 8.36 21.95 6.22 19.35 6.04Z"/>
+              </svg>
+              <span class="sun-circle"></span>
+            </span>
+            <span class="theme-icon dark-visual">
+              <svg class="moon-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.3 2C6.98 2 2.69 6.29 2.69 11.61C2.69 16.93 6.98 21.22 12.3 21.22C16.32 21.22 19.74 18.75 21.1 15.11C15.82 15.86 10.96 11.75 10.96 6.42C10.96 4.8 11.45 3.28 12.3 2Z"/>
+              </svg>
+              <span class="stars-group">
+                <span class="star star-1"></span>
+                <span class="star star-2"></span>
+                <span class="star star-3"></span>
+              </span>
+            </span>
+          </span>
+        </button>
+
+        <a href="#contato" class="btn btn-gold btn-sm">Solicitar Orçamento</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu de Navegação" aria-expanded="false" aria-controls="mainNav">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="inicio">
+      <div class="hero-backdrop" style="background-image: url('assets/images/hero.png');"></div>
+      <div class="hero-overlay"></div>
+      <canvas id="heroTrailCanvas" class="hero-trail-canvas"></canvas>
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="academic-badge" style="background-color: var(--color-gold-light); border-color: var(--color-gold); color: var(--color-gold);">
+            <span class="badge-dot"></span>
+            Arquitetura & Responsabilidade Social
+          </div>
+          <h1 class="hero-title">Arquitetura de Alto Padrão & Soluções Espaciais Sustentáveis</h1>
+          <p class="hero-lead">
+            Unimos estética, funcionalidade e impacto social. Especialistas em arquitetura residencial, corporativa, planejamento espacial e consultorias técnicas — sem execução física de obras.
+          </p>
+          <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-gold">Explorar Portfólio</a>
+            <a href="#sobre" class="btn btn-outline-light">Conhecer a Vesper</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Foco em Projeto & Planejamento</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">0</span>
+              <span class="stat-label">Obras Físicas (Sem Empreitada)</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">3D & BIM</span>
+              <span class="stat-label">Modelagem de Alta Precisão</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE NÓS -->
+    <section class="about-section section-padding" id="sobre">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">HISTÓRIA & PROPÓSITO</span>
+          <h2 class="section-title">A Vesper Arquitetura & Design</h2>
+          <div class="title-gold-bar"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card history-card">
+            <div class="card-icon">🏛️</div>
+            <h3>Quem Somos & Nossa Origem</h3>
+            <p>
+              A <strong>Vesper Arquitetura & Design</strong> nasceu de uma experiência transformadora que revelou aos seus fundadores o verdadeiro poder da arquitetura na vida das pessoas.
+            </p>
+            <p>
+              Após um incêndio atingir a casa de uma família da comunidade local, os fundadores uniram-se aos moradores para arrecadar recursos e ajudar na reconstrução do lar. Essa vivência mostrou como o planejamento arquitetônico é fundamental para devolver segurança, conforto e qualidade de vida.
+            </p>
+            <div class="impact-note-box">
+              <span class="impact-icon">🤝</span>
+              <div>
+                <strong>Compromisso de Impacto Social:</strong>
+                <p>Desenvolvemos projetos personalizados e sustentáveis, mantendo ações voltadas ao apoio de famílias em situação de vulnerabilidade que precisam reconstruir seus lares.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-card mvv-card">
+            <h3>Pilares Institucionais</h3>
+            <div class="mvv-list">
+              <div class="mvv-item">
+                <div class="mvv-header">
+                  <span class="mvv-badge">MISSÃO</span>
+                </div>
+                <p>Desenvolver soluções arquitetônicas inovadoras e personalizadas, oferecendo projetos executivos de alta precisão e consultoria técnica com gestão transparente e eficiente.</p>
+              </div>
+
+              <div class="mvv-item">
+                <div class="mvv-header">
+                  <span class="mvv-badge">MISSÃO</span>
+                </div>
+                <p>Criar projetos personalizados, seguros e funcionais, unindo excelência em arquitetura, planejamento espacial e responsabilidade social.</p>
+              </div>
+
+              <div class="mvv-item">
+                <div class="mvv-header">
+                  <span class="mvv-badge">VISÃO</span>
+                </div>
+                <p>Ser uma empresa reconhecida pela qualidade técnica dos seus projetos, pelo atendimento aos clientes e pelo impacto positivo que proporciona à sociedade.</p>
+              </div>
+
+              <div class="mvv-item">
+                <div class="mvv-header">
+                  <span class="mvv-badge">OBJETIVO & VALORES</span>
+                </div>
+                <p>Desenvolver ambientes que atendam com precisão às necessidades dos clientes, além de contribuir com famílias em situação de vulnerabilidade.</p>
+                <ul class="values-chips">
+                  <li>Rigor Técnico</li>
+                  <li>Ética & Transparência</li>
+                  <li>Inovação 3D</li>
+                  <li>Acessibilidade</li>
+                  <li>Sustentabilidade</li>
+                  <li>Impacto Social</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO NOSSA EQUIPE & ESTRUTURA DE DEPARTAMENTOS -->
+    <section class="team-section section-padding" id="equipe">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">ESTRUTURA CORPORATIVA</span>
+          <h2 class="section-title">Nossa Equipe & Departamentos</h2>
+          <div class="title-gold-bar"></div>
+        </div>
+
+        <div class="team-grid">
+          <!-- Diretoria -->
+          <article class="team-card">
+            <span class="team-card-badge">Gestão Geral</span>
+            <h3 class="team-card-title">Diretoria Executiva</h3>
+            <div class="team-card-leader">👤 Valenttina</div>
+            <p class="team-card-desc">Responsável pela coordenação geral, decisões estratégicas, integração entre departamentos e garantia dos padrões de qualidade da Vesper.</p>
+          </article>
+
+          <!-- Vendas -->
+          <article class="team-card">
+            <span class="team-card-badge">Atendimento</span>
+            <h3 class="team-card-title">Vendas & Relacionamento</h3>
+            <div class="team-card-leader">👤 Pedro</div>
+            <p class="team-card-desc">Primeiro contato com o cliente, entendimento de necessidades espaciais, apresentação de serviços e elaboração de orçamentos.</p>
+          </article>
+
+          <!-- Financeiro -->
+          <article class="team-card">
+            <span class="team-card-badge">Recursos</span>
+            <h3 class="team-card-title">Gestão Financeira</h3>
+            <div class="team-card-leader">👤 Arthur</div>
+            <p class="team-card-desc">Controle de receitas, despesas, planejamento de custos de projetos e sustentabilidade financeira da organização.</p>
+          </article>
+
+          <!-- Compras e Estoque -->
+          <article class="team-card">
+            <span class="team-card-badge">Logística</span>
+            <h3 class="team-card-title">Compras & Suprimentos</h3>
+            <div class="team-card-leader">👤 Maria</div>
+            <p class="team-card-desc">Seleção de fornecedores parceiros, catalogação de insumos técnicos e garantia de disponibilidade de materiais para planejamento.</p>
+          </article>
+
+          <!-- Marketing -->
+          <article class="team-card">
+            <span class="team-card-badge">Comunicação</span>
+            <h3 class="team-card-title">Marketing & Redes</h3>
+            <div class="team-card-leader">👥 Vanyres & Mayckon</div>
+            <p class="team-card-desc">Divulgação da marca, produção de conteúdo fotorrealista, presença digital e fortalecimento da imagem institucional.</p>
+          </article>
+
+          <!-- Produção -->
+          <article class="team-card">
+            <span class="team-card-badge">Projetos</span>
+            <h3 class="team-card-title">Produção & Qualidade</h3>
+            <div class="team-card-leader">👥 Daniela & Kemylle</div>
+            <p class="team-card-desc">Desenvolvimento dos projetos executivos, modelagem 3D, controle de detalhamento técnico e garantia do resultado final.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO SERVIÇOS -->
+    <section class="services-section section-padding bg-alt" id="servicos">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">NOSSAS ESPECIALIDADES</span>
+          <h2 class="section-title">Serviços de Projetos & Consultoria</h2>
+          <div class="title-gold-bar"></div>
+        </div>
+
+        <!-- Banner de aviso de não-execução de obras -->
+        <div class="notice-banner">
+          <div class="notice-icon">⚠️</div>
+          <div class="notice-content">
+            <strong>Transparência de Escopo Vesper:</strong>
+            <span>Atuamos exclusivamente no planejamento conceitual, projetos arquitetônicos, modelagem 3D, projetos executivos e consultoria técnica. <em>Não realizamos empreitadas ou execução de obras de construção civil.</em></span>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <article class="service-card">
+            <div class="service-image">
+              <img src="assets/images/residential.png" alt="Render de Projeto Residencial de Alto Padrão">
+              <span class="service-badge">Residencial</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Projetos Residenciais</h3>
+              <p class="service-desc">
+                Criação de residências exclusivas, funcionais e sustentáveis. Inclui estudos preliminares, plantas baixas humanizadas, cortes, fachadas em 3D e detalhamento executivo.
+              </p>
+              <ul class="service-features">
+                <li>✓ Planta Baixa & Cortes Humanizados</li>
+                <li>✓ Modelagem 3D Fotorrealista</li>
+                <li>✓ Projeto de Iluminação & Fachada</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="service-card">
+            <div class="service-image">
+              <img src="assets/images/commercial.png" alt="Render de Edifício Comercial Sustentável">
+              <span class="service-badge">Corporativo</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Projetos Comerciais</h3>
+              <p class="service-desc">
+                Arquitetura estratégica orientada aos objetivos do seu negócio. Otimização de fluxo de pessoas, comunicação visual integrada à fachada e eficiência funcional.
+              </p>
+              <ul class="service-features">
+                <li>✓ Layout Operacional Estratégico</li>
+                <li>✓ Fachadas Comerciais de Impacto</li>
+                <li>✓ Adequação a Normas Urbanas</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="service-card">
+            <div class="service-image">
+              <img src="assets/images/consulting.png" alt="Pranchas de Desenho Técnico e Maquete 3D">
+              <span class="service-badge">Consultoria</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Consultoria & Laudos</h3>
+              <p class="service-desc">
+                Análise técnica de viabilidade espacial, estudo de insolação, ventilação natural, adequação ao código de obras municipal e relatórios de otimização espacial.
+              </p>
+              <ul class="service-features">
+                <li>✓ Estudo de Viabilidade de Terrenos</li>
+                <li>✓ Análise de Insolação & Conforto</li>
+                <li>✓ Relatórios de Eficiência Espacial</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="service-card">
+            <div class="service-image">
+              <img src="assets/images/interior.png" alt="Projeto de Acessibilidade e Impacto Social">
+              <span class="service-badge">Impacto Social</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Acessibilidade & Projetos Sociais</h3>
+              <p class="service-desc">
+                Projetos voltados à inclusão, acessibilidade universal e apoio na reconstrução de moradias com segurança, conforto e dignidade para famílias necessitadas.
+              </p>
+              <ul class="service-features">
+                <li>✓ Acessibilidade Universal (NBR 9050)</li>
+                <li>✓ Planejamento Espacial Seguro</li>
+                <li>✓ Soluções Sustentáveis de Baixo Custo</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO PORTFÓLIO -->
+    <section class="portfolio-section section-padding" id="portfolio">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">NOSSO PORTFÓLIO</span>
+          <h2 class="section-title">Projetos de Destaque</h2>
+          <div class="title-gold-bar"></div>
+        </div>
+
+        <!-- Filtros do Portfólio -->
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">Todos os Projetos</button>
+          <button class="filter-btn" data-filter="residential">Residencial</button>
+          <button class="filter-btn" data-filter="commercial">Comercial</button>
+          <button class="filter-btn" data-filter="consulting">Consultoria</button>
+          <button class="filter-btn" data-filter="social">Impacto Social</button>
+        </div>
+
+        <!-- Grid de Projetos -->
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Item 1 -->
+          <article class="portfolio-item" data-category="residential">
+            <div class="portfolio-card">
+              <img src="assets/images/residential.png" alt="Villa Horizon - Residência Contemporânea">
+              <div class="portfolio-overlay">
+                <span class="portfolio-cat">Residencial</span>
+                <h3 class="portfolio-item-title">Villa Horizon</h3>
+                <p class="portfolio-item-desc">Residência de 450m² com conceito aberto e máxima iluminação natural.</p>
+                <button class="btn btn-gold btn-sm open-modal-btn" 
+                  data-title="Villa Horizon" 
+                  data-cat="Residencial" 
+                  data-img="assets/images/residential.png" 
+                  data-desc="Projeto arquitetônico residencial com conceito aberto, integração com paisagismo natural, piscina com borda infinita e aproveitamento máximo de luz natural. Desenvolvido inteiramente em modelagem 3D executiva.">
+                  Ver Detalhes
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="portfolio-item" data-category="commercial">
+            <div class="portfolio-card">
+              <img src="assets/images/commercial.png" alt="Solaris Headquarters - Edifício Corporativo">
+              <div class="portfolio-overlay">
+                <span class="portfolio-cat">Comercial</span>
+                <h3 class="portfolio-item-title">Solaris Headquarters</h3>
+                <p class="portfolio-item-desc">Complexo corporativo sustentável com jardins verticais.</p>
+                <button class="btn btn-gold btn-sm open-modal-btn" 
+                  data-title="Solaris Headquarters" 
+                  data-cat="Comercial" 
+                  data-img="assets/images/commercial.png" 
+                  data-desc="Projeto corporativo de 12 pavimentos focado em eficiência energética, brises metálicos na cor dourada e áreas de convivência integradas com biofilia.">
+                  Ver Detalhes
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="portfolio-item" data-category="social">
+            <div class="portfolio-card">
+              <img src="assets/images/interior.png" alt="Centro de Acolhimento Comunitário">
+              <div class="portfolio-overlay">
+                <span class="portfolio-cat">Impacto Social</span>
+                <h3 class="portfolio-item-title">Centro de Acolhimento</h3>
+                <p class="portfolio-item-desc">Projeto arquitetônico com acessibilidade universal e apoio a famílias.</p>
+                <button class="btn btn-gold btn-sm open-modal-btn" 
+                  data-title="Centro de Acolhimento Comunitário" 
+                  data-cat="Impacto Social" 
+                  data-img="assets/images/interior.png" 
+                  data-desc="Projeto de utilidade pública focado em reconstrução habitacional com segurança, rampas de acessibilidade universal (NBR 9050), conforto térmico e espaços multifuncionais de convivência.">
+                  Ver Detalhes
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="portfolio-item" data-category="consulting">
+            <div class="portfolio-card">
+              <img src="assets/images/consulting.png" alt="Masterplan & Viabilidade Urbana">
+              <div class="portfolio-overlay">
+                <span class="portfolio-cat">Consultoria</span>
+                <h3 class="portfolio-item-title">Masterplan Urbanístico</h3>
+                <p class="portfolio-item-desc">Estudo conceitual e pranchas executivas de análise espacial.</p>
+                <button class="btn btn-gold btn-sm open-modal-btn" 
+                  data-title="Masterplan Urbanístico" 
+                  data-cat="Consultoria" 
+                  data-img="assets/images/consulting.png" 
+                  data-desc="Consultoria técnica elaborada para otimização de ocupação de solo urbano, acompanhada de maquete eletrônica, pranchas técnicas em CAD e parecer de viabilidade municipal.">
+                  Ver Detalhes
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DIFERENCIAIS -->
+    <section class="features-section section-padding bg-alt" id="diferenciais">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">POR QUE ESCOLHER A VESPER</span>
+          <h2 class="section-title">Nossos Diferenciais Competitivos</h2>
+          <div class="title-gold-bar"></div>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon">📊</div>
+            <h3>Excelência em Gestão Espacial</h3>
+            <p>Nossos projetos contam com orçamento detalhado de fases projetuais, cronograma de entregas rigoroso e alinhamento estratégico.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon">💻</div>
+            <h3>Modelagem 3D em Alta Precisão</h3>
+            <p>Visualização fotorrealista completa do imóvel antes de qualquer tomada de decisão, evitando surpresas no desenvolvimento.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon">🌿</div>
+            <h3>Sustentabilidade Racional</h3>
+            <p>Aproveitamento de orientação solar, ventilação cruzada e especificação de materiais sustentáveis para economia de energia.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon">📜</div>
+            <h3>Clareza & Segurança Jurídica</h3>
+            <p>Contratos transparentes delimitando rigorosamente o escopo projetual e consultivo, sem ambiguidades de execução de obras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO & ORÇAMENTO -->
+    <section class="contact-section section-padding" id="contato">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">FALE CONOSCO</span>
+          <h2 class="section-title">Solicite um Orçamento de Projeto</h2>
+          <div class="title-gold-bar"></div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Formulário -->
+          <div class="contact-form-container">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Nome Completo *</label>
+                  <input type="text" id="name" name="name" placeholder="Ex: Maria Silva" required>
+                  <span class="error-msg" id="nameError">Por favor, informe seu nome.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">E-mail Corporativo ou Pessoal *</label>
+                  <input type="email" id="email" name="email" placeholder="Ex: maria@exemplo.com" required>
+                  <span class="error-msg" id="emailError">Informe um e-mail válido.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Telefone / WhatsApp *</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Ex: (11) 99999-9999" required>
+                  <span class="error-msg" id="phoneError">Informe um telefone de contato.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="serviceType">Tipo de Serviço Desejado *</label>
+                  <select id="serviceType" name="serviceType" required>
+                    <option value="" disabled selected>Selecione uma opção...</option>
+                    <option value="residencial">Projeto Arquitetônico Residencial</option>
+                    <option value="comercial">Projeto Corporativo / Comercial</option>
+                    <option value="consultoria">Consultoria Técnica / Viabilidade</option>
+                    <option value="social">Acessibilidade & Projetos Sociais</option>
+                  </select>
+                  <span class="error-msg" id="serviceError">Selecione o serviço desejado.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Descrição do Projeto ou Necessidade *</label>
+                <textarea id="message" name="message" rows="4" placeholder="Descreva brevemente o imóvel, metragem aproximada ou necessidades específicas do seu projeto..." required></textarea>
+                <span class="error-msg" id="messageError">Insira detalhes sobre seu projeto.</span>
+              </div>
+
+              <div class="form-checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Estou ciente de que a Vesper Arquitetura desenvolve projetos e consultorias, não executando obras físicas de construção civil. *</label>
+              </div>
+              <span class="error-msg" id="termsError">Você deve confirmar a ciência sobre o escopo dos serviços.</span>
+
+              <button type="submit" class="btn btn-gold btn-block" id="submitBtn">
+                <span class="btn-text">Enviar Solicitação de Orçamento</span>
+                <span class="btn-spinner" hidden>⏳ Processando...</span>
+              </button>
+            </form>
+
+            <div class="toast-notification" id="toastNotification" hidden>
+              <div class="toast-icon">✓</div>
+              <div class="toast-body">
+                <strong>Solicitação Enviada com Sucesso!</strong>
+                <p>Obrigado pelo contato. Nossa equipe de arquitetos retornará em breve.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Informações de Contato -->
+          <div class="contact-info-container">
+            <div class="info-card">
+              <h3>Informações da Empresa</h3>
+              <p class="info-intro">Estamos à disposição para transformar suas ideias em projetos arquitetônicos impecáveis.</p>
+
+              <div class="info-details">
+                <div class="info-item">
+                  <span class="info-icon">📍</span>
+                  <div>
+                    <strong>Endereço Institucional</strong>
+                    <p>Av. Paulista, 1000 - Sala 1201<br>Bela Vista - São Paulo / SP</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <span class="info-icon">✉️</span>
+                  <div>
+                    <strong>E-mail Institucional</strong>
+                    <p>contato@vesperarquitetura.com.br</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <span class="info-icon">📞</span>
+                  <div>
+                    <strong>Telefone / WhatsApp</strong>
+                    <p>(11) 3456-7890 | (11) 98765-4321</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <span class="info-icon">⏰</span>
+                  <div>
+                    <strong>Horário de Atendimento</strong>
+                    <p>Segunda a Sexta: 08:30 às 18:00</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="impact-badge-footer">
+                ✨ Vesper Arquitetura & Design — Transformando Espaços e Vidas
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="#inicio" class="brand-logo">
+            <span class="logo-title">VESPER</span>
+            <span class="logo-subtitle">ARQUITETURA & DESIGN</span>
+          </a>
+          <p class="footer-tagline">
+            Escritório especializado em planejamento, projetos arquitetônicos e consultoria espacial. Excelência estética e responsabilidade social.
+          </p>
+        </div>
+
+        <div class="footer-nav">
+          <h4 class="footer-heading">Navegação</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-services">
+          <h4 class="footer-heading">Especialidades</h4>
+          <ul>
+            <li>Projetos Residenciais</li>
+            <li>Projetos Corporativos</li>
+            <li>Consultorias Técnicas</li>
+            <li>Acessibilidade & Impacto Social</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-corporate-disclaimer">
+          <p>
+            <strong>Vesper Arquitetura & Design:</strong> Projetos arquitetônicos de excelência, modelos 3D executivos e planejamento de viabilidade com compromisso de transformação social.
+          </p>
+        </div>
+        <p class="copyright">
+          &copy; 2026 Vesper Arquitetura & Design. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL / LIGHTBOX DE PROJETO -->
+  <div class="modal-overlay" id="projectModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Fechar Modal">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge" id="modalCat">Categoria</span>
+        <h3 class="modal-title" id="modalTitle">Título do Projeto</h3>
+      </div>
+      <div class="modal-body">
+        <img src="" alt="" id="modalImg" class="modal-img">
+        <p id="modalDesc" class="modal-desc">Descrição detalhada do projeto...</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-gold btn-sm" id="modalCtaBtn">Solicitar Orçamento Deste Serviço</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
