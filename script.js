@@ -152,9 +152,96 @@ function initProjectModal() {
   const modalDesc = document.getElementById('modalDesc');
   const modalCtaBtn = document.getElementById('modalCtaBtn');
 
+  // Abas e Containers
+  const tabBtns = document.querySelectorAll('.modal-tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  const plan2dCanvas = document.getElementById('plan2dCanvas');
+  const homebymeIframe = document.getElementById('homebymeIframe');
+  const homebymeSpinner = document.getElementById('homebymeSpinner');
+  const fallback3DWrapper = document.getElementById('fallback3DWrapper');
+  const canvas3DFallback = document.getElementById('canvas3DFallback');
+
+  let activeEngine3D = null;
+  let currentProjectData = null;
+
   if (!modal) return;
 
+  // Função para Alternar Abas
+  function switchModalTab(tabName) {
+    tabBtns.forEach(btn => {
+      const isSelected = btn.getAttribute('data-tab') === tabName;
+      btn.classList.toggle('active', isSelected);
+      btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+    });
+
+    tabPanes.forEach(pane => {
+      pane.classList.remove('active');
+    });
+
+    if (tabName === 'photo') {
+      const pane = document.getElementById('tabPanePhoto');
+      if (pane) pane.classList.add('active');
+    } else if (tabName === 'plan2d') {
+      const pane = document.getElementById('tabPane2D');
+      if (pane) pane.classList.add('active');
+      if (plan2dCanvas && currentProjectData) {
+        setTimeout(() => drawArchitecturalPlan2D(plan2dCanvas, currentProjectData.title, currentProjectData.cat), 50);
+      }
+    } else if (tabName === 'model3d') {
+      const pane = document.getElementById('tabPane3D');
+      if (pane) pane.classList.add('active');
+      setup3DView(currentProjectData ? currentProjectData.homebymeUrl : '');
+    }
+  }
+
+  // Configurar Visualização 3D (Iframe Embed Direto no Modal + Fallback 3D Nativo)
+  function setup3DView(url) {
+    if (url && url.trim().length > 0) {
+      let embedUrl = url.trim();
+      // Formatação automática para URL de Embed do HomeByMe se for link padrão do projeto
+      if (embedUrl.includes('home.by.me') && !embedUrl.endsWith('/embed')) {
+        embedUrl = embedUrl.replace(/\/$/, '') + '/embed';
+      }
+
+      if (fallback3DWrapper) fallback3DWrapper.style.display = 'none';
+      if (homebymeIframe) {
+        homebymeIframe.style.display = 'block';
+        homebymeIframe.src = embedUrl;
+      }
+      if (homebymeSpinner) {
+        homebymeSpinner.style.display = 'flex';
+        homebymeSpinner.style.opacity = '1';
+        homebymeIframe.onload = () => {
+          homebymeSpinner.style.opacity = '0';
+          setTimeout(() => { homebymeSpinner.style.display = 'none'; }, 400);
+        };
+      }
+    } else {
+      // Exibir Maquete 3D Interativa Nativa Vesper (Caso não haja URL configurada)
+      if (homebymeIframe) homebymeIframe.style.display = 'none';
+      if (homebymeSpinner) homebymeSpinner.style.display = 'none';
+      if (fallback3DWrapper) fallback3DWrapper.style.display = 'block';
+
+      if (canvas3DFallback && !activeEngine3D) {
+        setTimeout(() => {
+          activeEngine3D = create3DHouseEngine(canvas3DFallback);
+        }, 50);
+      }
+    }
+  }
+
+
+
+  // Event Listeners das Abas
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabName = btn.getAttribute('data-tab');
+      switchModalTab(tabName);
+    });
+  });
+
   function openModal(data) {
+    currentProjectData = data;
     if (modalTitle) modalTitle.textContent = data.title;
     if (modalCat) modalCat.textContent = data.cat;
     if (modalImg) {
@@ -162,6 +249,9 @@ function initProjectModal() {
       modalImg.alt = data.title;
     }
     if (modalDesc) modalDesc.textContent = data.desc;
+
+    // Resetar para a primeira aba (Foto) ao abrir
+    switchModalTab('photo');
 
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
@@ -172,6 +262,13 @@ function initProjectModal() {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (activeEngine3D) {
+      activeEngine3D.stop();
+      activeEngine3D = null;
+    }
+    if (homebymeIframe) {
+      homebymeIframe.src = '';
+    }
   }
 
   openBtns.forEach(btn => {
@@ -180,6 +277,8 @@ function initProjectModal() {
         title: btn.getAttribute('data-title'),
         cat: btn.getAttribute('data-cat'),
         img: btn.getAttribute('data-img'),
+        img2d: btn.getAttribute('data-img-2d'),
+        homebymeUrl: btn.getAttribute('data-homebyme-url'),
         desc: btn.getAttribute('data-desc')
       };
       openModal(data);
@@ -190,14 +289,12 @@ function initProjectModal() {
     modalClose.addEventListener('click', closeModal);
   }
 
-  // Fechar ao clicar no overlay escuro
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();
     }
   });
 
-  // Fechar com a tecla ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('open')) {
       closeModal();
@@ -214,6 +311,279 @@ function initProjectModal() {
     });
   }
 }
+
+/* --------------------------------------------------------------------------
+   FUNÇÕES AUXILIARES DE RENDERIZAÇÃO 2D E 3D PARA O MODAL
+   -------------------------------------------------------------------------- */
+
+// Desenha a Planta Baixa 2D Técnica no Canvas
+function drawArchitecturalPlan2D(canvas, title, cat) {
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+
+  canvas.width = rect.width * (window.devicePixelRatio || 1);
+  canvas.height = rect.height * (window.devicePixelRatio || 1);
+  ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+
+  const w = rect.width;
+  const h = rect.height;
+
+  // Fundo técnico estilo planta baixa
+  ctx.fillStyle = '#070f1e';
+  ctx.fillRect(0, 0, w, h);
+
+  // Grade de alinhamento CAD (Grid)
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+  ctx.lineWidth = 1;
+  const gridSize = 24;
+  for (let x = 0; x < w; x += gridSize) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+  }
+  for (let y = 0; y < h; y += gridSize) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+  }
+
+  // Margens da Planta
+  const marginX = w * 0.1;
+  const marginY = h * 0.12;
+  const houseW = w - marginX * 2;
+  const houseH = h - marginY * 2.2;
+
+  // Paredes Externas (Dourado Vesper)
+  ctx.strokeStyle = '#c7a14a';
+  ctx.lineWidth = 4;
+  ctx.strokeRect(marginX, marginY, houseW, houseH);
+
+  // Divisórias de Cômodos (Paredes Internas)
+  ctx.strokeStyle = '#64748b';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  // Parede horizontal principal
+  ctx.moveTo(marginX, marginY + houseH * 0.48);
+  ctx.lineTo(marginX + houseW, marginY + houseH * 0.48);
+  // Divisória vertical 1 (Suíte)
+  ctx.moveTo(marginX + houseW * 0.45, marginY);
+  ctx.lineTo(marginX + houseW * 0.45, marginY + houseH * 0.48);
+  // Divisória vertical 2 (Serviço)
+  ctx.moveTo(marginX + houseW * 0.65, marginY + houseH * 0.48);
+  ctx.lineTo(marginX + houseW * 0.65, marginY + houseH);
+  ctx.stroke();
+
+  // Arcos de Abertura de Portas (Estilo Planta Baixa CAD)
+  ctx.strokeStyle = '#d4af37';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.arc(marginX + houseW * 0.45, marginY + 35, 22, 0, Math.PI * 0.5);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(marginX + houseW * 0.65, marginY + houseH * 0.48 + 35, 22, Math.PI * 0.5, Math.PI);
+  ctx.stroke();
+
+  // Rótulos e Cotas de Ambientes
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
+  ctx.textAlign = 'center';
+
+  // Cômodo 1
+  ctx.fillText('SUÍTE PRINCIPAL', marginX + houseW * 0.22, marginY + houseH * 0.22);
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px sans-serif';
+  ctx.fillText('4.80m × 3.60m', marginX + houseW * 0.22, marginY + houseH * 0.32);
+
+  // Cômodo 2
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText('LIVING & ESPAÇO INTEGRADO', marginX + houseW * 0.72, marginY + houseH * 0.22);
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px sans-serif';
+  ctx.fillText('6.50m × 4.80m', marginX + houseW * 0.72, marginY + houseH * 0.32);
+
+  // Cômodo 3
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText('COZINHA ARCH', marginX + houseW * 0.32, marginY + houseH * 0.7);
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px sans-serif';
+  ctx.fillText('4.20m × 3.50m', marginX + houseW * 0.32, marginY + houseH * 0.8);
+
+  // Cômodo 4
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText('SAN. PNE / ACESSIBILIDADE', marginX + houseW * 0.82, marginY + houseH * 0.7);
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px sans-serif';
+  ctx.fillText('2.40m × 2.10m', marginX + houseW * 0.82, marginY + houseH * 0.8);
+
+  // Marcações de Escala e Rosa dos Ventos
+  ctx.fillStyle = '#c7a14a';
+  ctx.font = 'bold 10px sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('PLANTA BAIXA EXECUTIVA | VESPER ARCH - NBR 9050', marginX, h - 14);
+
+  ctx.save();
+  ctx.translate(w - marginX - 15, 30);
+  ctx.beginPath();
+  ctx.moveTo(0, -12); ctx.lineTo(5, 6); ctx.lineTo(0, 2); ctx.lineTo(-5, 6);
+  ctx.closePath();
+  ctx.fillStyle = '#d4af37';
+  ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 9px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('N', 0, -15);
+  ctx.restore();
+}
+
+// Engine Interativa de Maquete 3D em Canvas WebGL/2D
+function create3DHouseEngine(canvas) {
+  if (!canvas) return null;
+  const ctx = canvas.getContext('2d');
+
+  let rotX = 0.45;
+  let rotY = 0.65;
+  let zoom = 1.0;
+  let isDragging = false;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
+  let animationFrameId = null;
+
+  // Vértices 3D da Estrutura da Casa
+  const vertices = [
+    // Corpo principal da casa
+    [-1, -0.6, -1], [1, -0.6, -1], [1, 0.5, -1], [-1, 0.5, -1],
+    [-1, -0.6, 1],  [1, -0.6, 1],  [1, 0.5, 1],  [-1, 0.5, 1],
+    // Telhado moderno em duas águas
+    [0, 1.2, -1], [0, 1.2, 1],
+    // Bloco da varanda gourmet integrativa
+    [1, -0.6, -1], [1.7, -0.6, -1], [1.7, 0.2, -1], [1, 0.2, -1],
+    [1, -0.6, 0.4], [1.7, -0.6, 0.4], [1.7, 0.2, 0.4], [1, 0.2, 0.4]
+  ];
+
+  const edges = [
+    // Estrutura principal
+    [0,1], [1,2], [2,3], [3,0],
+    [4,5], [5,6], [6,7], [7,4],
+    [0,4], [1,5], [2,6], [3,7],
+    // Cumeeira do telhado
+    [3,8], [2,8], [7,9], [6,9], [8,9],
+    // Anexo da varanda
+    [10,11], [11,12], [12,13], [13,10],
+    [14,15], [15,16], [16,17], [17,14],
+    [10,14], [11,15], [12,16], [13,17]
+  ];
+
+  function project(v, width, height) {
+    const x1 = v[0] * Math.cos(rotY) - v[2] * Math.sin(rotY);
+    const z1 = v[0] * Math.sin(rotY) + v[2] * Math.cos(rotY);
+
+    const y2 = v[1] * Math.cos(rotX) - z1 * Math.sin(rotX);
+    const z2 = v[1] * Math.sin(rotX) + z1 * Math.cos(rotX);
+
+    const scale = (340 * zoom) / (z2 + 4.5);
+    const x2 = x1 * scale + width / 2;
+    const y3 = -y2 * scale + height / 2;
+
+    return { x: x2, y: y3, z: z2 };
+  }
+
+  function render() {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+
+    canvas.width = rect.width * (window.devicePixelRatio || 1);
+    canvas.height = rect.height * (window.devicePixelRatio || 1);
+    ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+
+    const w = rect.width;
+    const h = rect.height;
+
+    ctx.fillStyle = '#070f1e';
+    ctx.fillRect(0, 0, w, h);
+
+    if (!isDragging) {
+      rotY += 0.006;
+    }
+
+    // Grade 3D de terreno
+    ctx.strokeStyle = 'rgba(212, 175, 55, 0.12)';
+    ctx.lineWidth = 1;
+    for (let i = -3; i <= 3; i++) {
+      const p1 = project([i, -0.6, -3], w, h);
+      const p2 = project([i, -0.6, 3], w, h);
+      ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+
+      const p3 = project([-3, -0.6, i], w, h);
+      const p4 = project([3, -0.6, i], w, h);
+      ctx.beginPath(); ctx.moveTo(p3.x, p3.y); ctx.lineTo(p4.x, p4.y); ctx.stroke();
+    }
+
+    const projected = vertices.map(v => project(v, w, h));
+
+    // Desenhando Arestas 3D Arquitetônicas
+    ctx.strokeStyle = '#d4af37';
+    ctx.lineWidth = 2;
+    edges.forEach(edge => {
+      const p1 = projected[edge[0]];
+      const p2 = projected[edge[1]];
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+    });
+
+    // Pontos de Vértices 3D
+    ctx.fillStyle = '#ffffff';
+    projected.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  canvas.addEventListener('mousedown', e => {
+    isDragging = true;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+  });
+
+  const onMouseMove = e => {
+    if (!isDragging) return;
+    const deltaX = e.clientX - lastMouseX;
+    const deltaY = e.clientY - lastMouseY;
+    rotY += deltaX * 0.008;
+    rotX += deltaY * 0.008;
+    rotX = Math.max(-Math.PI / 3, Math.min(Math.PI / 3, rotX));
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+  };
+
+  const onMouseUp = () => { isDragging = false; };
+
+  window.addEventListener('mousemove', onMouseMove);
+  window.addEventListener('mouseup', onMouseUp);
+
+  canvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    zoom += e.deltaY * -0.001;
+    zoom = Math.max(0.6, Math.min(2.2, zoom));
+  }, { passive: false });
+
+  render();
+
+  return {
+    stop: () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    }
+  };
+}
+
 
 /* ==========================================================================
    5. VALIDAÇÃO E ENVIO DO FORMULÁRIO DE CONTATO
