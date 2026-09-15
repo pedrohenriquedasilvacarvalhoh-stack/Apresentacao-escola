@@ -418,13 +418,14 @@ html[data-theme="dark"] .dark-visual {
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1400px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .brand-logo {
@@ -432,6 +433,7 @@ html[data-theme="dark"] .dark-visual {
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logo-icon-img {
@@ -468,18 +470,28 @@ html[data-theme="dark"] .dark-visual {
   margin-top: 2px;
 }
 
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
 .nav-list {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
   color: var(--color-slate);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   position: relative;
   padding: 0.5rem 0;
+  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
@@ -510,7 +522,8 @@ html[data-theme="dark"] .dark-visual {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
+  flex-shrink: 0;
 }
 
 .menu-toggle {
@@ -531,7 +544,7 @@ html[data-theme="dark"] .dark-visual {
 }
 
 /* Responsividade do Header */
-@media (max-width: 991px) {
+@media (max-width: 1180px) {
   .menu-toggle {
     display: block;
   }
