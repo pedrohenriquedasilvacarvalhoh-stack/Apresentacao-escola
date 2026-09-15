@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vesper Arquitetura & Design - Escritório especializado em projetos residenciais, corporativos, acessibilidade, planejamento espacial e consultoria arquitetônica.">
-  <meta name="keywords" content="Arquitetura, Projetos Arquitetônicos, Consultoria Técnica, Acessibilidade, Responsabilidade Social, Vesper Arquitetura">
-  <meta name="author" content="Vesper Arquitetura & Design">
-  <title>Vesper Arquitetura & Design | Projetos & Consultoria Especializada</title>
-  
+  <meta name="description"
+    content="Vesper Arquitetura - Escritório especializado em projetos residenciais, corporativos, acessibilidade, planejamento espacial e consultoria arquitetônica.">
+  <meta name="keywords"
+    content="Arquitetura, Projetos Arquitetônicos, Consultoria Técnica, Acessibilidade, Responsabilidade Social, Vesper Arquitetura">
+  <meta name="author" content="Vesper Arquitetura">
+  <title>Vesper Arquitetura | Projetos & Consultoria Especializada</title>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- CANVAS DE ANIMAÇÃO DE FUNDO -->
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -25,7 +31,7 @@
     <div class="header-container">
       <a href="#inicio" class="brand-logo" aria-label="Vesper Arquitetura Página Inicial">
         <span class="logo-title">VESPER</span>
-        <span class="logo-subtitle">ARQUITETURA & DESIGN</span>
+        <span class="logo-subtitle">ARQUITETURA & PROJETOS</span>
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="Navegação Principal">
@@ -42,17 +48,20 @@
 
       <div class="header-actions">
         <!-- BOTÃO TOGGLE DE TEMA CLARO / ESCURO (Visuais de Sol/Nuvem e Lua/Estrelas) -->
-        <button class="theme-toggle-btn" id="themeToggle" aria-label="Alternar Modo Escuro / Modo Claro" role="switch" aria-checked="false">
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Alternar Modo Escuro / Modo Claro" role="switch"
+          aria-checked="false">
           <span class="toggle-pill">
             <span class="theme-icon light-visual">
               <svg class="cloud-icon" viewBox="0 0 24 16" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19.35 6.04C18.67 2.59 15.64 0 12 0C9.11 0 6.6 1.64 5.35 4.04C2.34 4.36 0 6.91 0 10C0 13.31 2.69 16 6 16H19C21.76 16 24 13.76 24 11C24 8.36 21.95 6.22 19.35 6.04Z"/>
+                <path
+                  d="M19.35 6.04C18.67 2.59 15.64 0 12 0C9.11 0 6.6 1.64 5.35 4.04C2.34 4.36 0 6.91 0 10C0 13.31 2.69 16 6 16H19C21.76 16 24 13.76 24 11C24 8.36 21.95 6.22 19.35 6.04Z" />
               </svg>
               <span class="sun-circle"></span>
             </span>
             <span class="theme-icon dark-visual">
               <svg class="moon-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.3 2C6.98 2 2.69 6.29 2.69 11.61C2.69 16.93 6.98 21.22 12.3 21.22C16.32 21.22 19.74 18.75 21.1 15.11C15.82 15.86 10.96 11.75 10.96 6.42C10.96 4.8 11.45 3.28 12.3 2Z"/>
+                <path
+                  d="M12.3 2C6.98 2 2.69 6.29 2.69 11.61C2.69 16.93 6.98 21.22 12.3 21.22C16.32 21.22 19.74 18.75 21.1 15.11C15.82 15.86 10.96 11.75 10.96 6.42C10.96 4.8 11.45 3.28 12.3 2Z" />
               </svg>
               <span class="stars-group">
                 <span class="star star-1"></span>
@@ -64,7 +73,8 @@
         </button>
 
         <a href="#contato" class="btn btn-gold btn-sm">Solicitar Orçamento</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu de Navegação" aria-expanded="false" aria-controls="mainNav">
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu de Navegação" aria-expanded="false"
+          aria-controls="mainNav">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -81,13 +91,15 @@
       <canvas id="heroTrailCanvas" class="hero-trail-canvas"></canvas>
       <div class="hero-container">
         <div class="hero-content">
-          <div class="academic-badge" style="background-color: var(--color-gold-light); border-color: var(--color-gold); color: var(--color-gold);">
+          <div class="academic-badge"
+            style="background-color: var(--color-gold-light); border-color: var(--color-gold); color: var(--color-gold);">
             <span class="badge-dot"></span>
             Arquitetura & Responsabilidade Social
           </div>
           <h1 class="hero-title">Arquitetura de Alto Padrão & Soluções Espaciais Sustentáveis</h1>
           <p class="hero-lead">
-            Unimos estética, funcionalidade e impacto social. Especialistas em arquitetura residencial, corporativa, planejamento espacial e consultorias técnicas — sem execução física de obras.
+            Unimos estética, funcionalidade e impacto social. Especialistas em arquitetura residencial, corporativa,
+            planejamento espacial e consultorias técnicas — sem execução física de obras.
           </p>
           <div class="hero-buttons">
             <a href="#portfolio" class="btn btn-gold">Explorar Portfólio</a>
@@ -119,7 +131,7 @@
       <div class="section-container">
         <div class="section-header text-center">
           <span class="section-subtitle">HISTÓRIA & PROPÓSITO</span>
-          <h2 class="section-title">A Vesper Arquitetura & Design</h2>
+          <h2 class="section-title">A Vesper Arquitetura</h2>
           <div class="title-gold-bar"></div>
         </div>
 
@@ -128,16 +140,20 @@
             <div class="card-icon">🏛️</div>
             <h3>Quem Somos & Nossa Origem</h3>
             <p>
-              A <strong>Vesper Arquitetura & Design</strong> nasceu de uma experiência transformadora que revelou aos seus fundadores o verdadeiro poder da arquitetura na vida das pessoas.
+              A <strong>Vesper Arquitetura</strong> nasceu de uma experiência transformadora que revelou aos
+              seus fundadores o verdadeiro poder da arquitetura na vida das pessoas.
             </p>
             <p>
-              Após um incêndio atingir a casa de uma família da comunidade local, os fundadores uniram-se aos moradores para arrecadar recursos e ajudar na reconstrução do lar. Essa vivência mostrou como o planejamento arquitetônico é fundamental para devolver segurança, conforto e qualidade de vida.
+              Após um incêndio atingir a casa de uma família da comunidade local, os fundadores uniram-se aos moradores
+              para arrecadar recursos e ajudar na reconstrução do lar. Essa vivência mostrou como o planejamento
+              arquitetônico é fundamental para devolver segurança, conforto e qualidade de vida.
             </p>
             <div class="impact-note-box">
               <span class="impact-icon">🤝</span>
               <div>
                 <strong>Compromisso de Impacto Social:</strong>
-                <p>Desenvolvemos projetos personalizados e sustentáveis, mantendo ações voltadas ao apoio de famílias em situação de vulnerabilidade que precisam reconstruir seus lares.</p>
+                <p>Desenvolvemos projetos personalizados e sustentáveis, mantendo ações voltadas ao apoio de famílias em
+                  situação de vulnerabilidade que precisam reconstruir seus lares.</p>
               </div>
             </div>
           </div>
@@ -149,28 +165,32 @@
                 <div class="mvv-header">
                   <span class="mvv-badge">MISSÃO</span>
                 </div>
-                <p>Desenvolver soluções arquitetônicas inovadoras e personalizadas, oferecendo projetos executivos de alta precisão e consultoria técnica com gestão transparente e eficiente.</p>
+                <p>Desenvolver soluções arquitetônicas inovadoras e personalizadas, oferecendo projetos executivos de
+                  alta precisão e consultoria técnica com gestão transparente e eficiente.</p>
               </div>
 
               <div class="mvv-item">
                 <div class="mvv-header">
                   <span class="mvv-badge">MISSÃO</span>
                 </div>
-                <p>Criar projetos personalizados, seguros e funcionais, unindo excelência em arquitetura, planejamento espacial e responsabilidade social.</p>
+                <p>Criar projetos personalizados, seguros e funcionais, unindo excelência em arquitetura, planejamento
+                  espacial e responsabilidade social.</p>
               </div>
 
               <div class="mvv-item">
                 <div class="mvv-header">
                   <span class="mvv-badge">VISÃO</span>
                 </div>
-                <p>Ser uma empresa reconhecida pela qualidade técnica dos seus projetos, pelo atendimento aos clientes e pelo impacto positivo que proporciona à sociedade.</p>
+                <p>Ser uma empresa reconhecida pela qualidade técnica dos seus projetos, pelo atendimento aos clientes e
+                  pelo impacto positivo que proporciona à sociedade.</p>
               </div>
 
               <div class="mvv-item">
                 <div class="mvv-header">
                   <span class="mvv-badge">OBJETIVO & VALORES</span>
                 </div>
-                <p>Desenvolver ambientes que atendam com precisão às necessidades dos clientes, além de contribuir com famílias em situação de vulnerabilidade.</p>
+                <p>Desenvolver ambientes que atendam com precisão às necessidades dos clientes, além de contribuir com
+                  famílias em situação de vulnerabilidade.</p>
                 <ul class="values-chips">
                   <li>Rigor Técnico</li>
                   <li>Ética & Transparência</li>
@@ -201,7 +221,8 @@
             <span class="team-card-badge">Gestão Geral</span>
             <h3 class="team-card-title">Diretoria Executiva</h3>
             <div class="team-card-leader">👤 Valenttina</div>
-            <p class="team-card-desc">Responsável pela coordenação geral, decisões estratégicas, integração entre departamentos e garantia dos padrões de qualidade da Vesper.</p>
+            <p class="team-card-desc">Responsável pela coordenação geral, decisões estratégicas, integração entre
+              departamentos e garantia dos padrões de qualidade da Vesper.</p>
           </article>
 
           <!-- Vendas -->
@@ -209,7 +230,8 @@
             <span class="team-card-badge">Atendimento</span>
             <h3 class="team-card-title">Vendas & Relacionamento</h3>
             <div class="team-card-leader">👤 Pedro</div>
-            <p class="team-card-desc">Primeiro contato com o cliente, entendimento de necessidades espaciais, apresentação de serviços e elaboração de orçamentos.</p>
+            <p class="team-card-desc">Primeiro contato com o cliente, entendimento de necessidades espaciais,
+              apresentação de serviços e elaboração de orçamentos.</p>
           </article>
 
           <!-- Financeiro -->
@@ -217,7 +239,8 @@
             <span class="team-card-badge">Recursos</span>
             <h3 class="team-card-title">Gestão Financeira</h3>
             <div class="team-card-leader">👤 Arthur</div>
-            <p class="team-card-desc">Controle de receitas, despesas, planejamento de custos de projetos e sustentabilidade financeira da organização.</p>
+            <p class="team-card-desc">Controle de receitas, despesas, planejamento de custos de projetos e
+              sustentabilidade financeira da organização.</p>
           </article>
 
           <!-- Compras e Estoque -->
@@ -225,7 +248,8 @@
             <span class="team-card-badge">Logística</span>
             <h3 class="team-card-title">Compras & Suprimentos</h3>
             <div class="team-card-leader">👤 Maria</div>
-            <p class="team-card-desc">Seleção de fornecedores parceiros, catalogação de insumos técnicos e garantia de disponibilidade de materiais para planejamento.</p>
+            <p class="team-card-desc">Seleção de fornecedores parceiros, catalogação de insumos técnicos e garantia de
+              disponibilidade de materiais para planejamento.</p>
           </article>
 
           <!-- Marketing -->
@@ -233,7 +257,8 @@
             <span class="team-card-badge">Comunicação</span>
             <h3 class="team-card-title">Marketing & Redes</h3>
             <div class="team-card-leader">👥 Vanyres & Mayckon</div>
-            <p class="team-card-desc">Divulgação da marca, produção de conteúdo fotorrealista, presença digital e fortalecimento da imagem institucional.</p>
+            <p class="team-card-desc">Divulgação da marca, produção de conteúdo fotorrealista, presença digital e
+              fortalecimento da imagem institucional.</p>
           </article>
 
           <!-- Produção -->
@@ -241,7 +266,8 @@
             <span class="team-card-badge">Projetos</span>
             <h3 class="team-card-title">Produção & Qualidade</h3>
             <div class="team-card-leader">👥 Daniela & Kemylle</div>
-            <p class="team-card-desc">Desenvolvimento dos projetos executivos, modelagem 3D, controle de detalhamento técnico e garantia do resultado final.</p>
+            <p class="team-card-desc">Desenvolvimento dos projetos executivos, modelagem 3D, controle de detalhamento
+              técnico e garantia do resultado final.</p>
           </article>
         </div>
       </div>
@@ -261,7 +287,9 @@
           <div class="notice-icon">⚠️</div>
           <div class="notice-content">
             <strong>Transparência de Escopo Vesper:</strong>
-            <span>Atuamos exclusivamente no planejamento conceitual, projetos arquitetônicos, modelagem 3D, projetos executivos e consultoria técnica. <em>Não realizamos empreitadas ou execução de obras de construção civil.</em></span>
+            <span>Atuamos exclusivamente no planejamento conceitual, projetos arquitetônicos, modelagem 3D, projetos
+              executivos e consultoria técnica. <em>Não realizamos empreitadas ou execução de obras de construção
+                civil.</em></span>
           </div>
         </div>
 
@@ -275,7 +303,8 @@
             <div class="service-body">
               <h3 class="service-title">Projetos Residenciais</h3>
               <p class="service-desc">
-                Criação de residências exclusivas, funcionais e sustentáveis. Inclui estudos preliminares, plantas baixas humanizadas, cortes, fachadas em 3D e detalhamento executivo.
+                Criação de residências exclusivas, funcionais e sustentáveis. Inclui estudos preliminares, plantas
+                baixas humanizadas, cortes, fachadas em 3D e detalhamento executivo.
               </p>
               <ul class="service-features">
                 <li>✓ Planta Baixa & Cortes Humanizados</li>
@@ -294,7 +323,8 @@
             <div class="service-body">
               <h3 class="service-title">Projetos Comerciais</h3>
               <p class="service-desc">
-                Arquitetura estratégica orientada aos objetivos do seu negócio. Otimização de fluxo de pessoas, comunicação visual integrada à fachada e eficiência funcional.
+                Arquitetura estratégica orientada aos objetivos do seu negócio. Otimização de fluxo de pessoas,
+                comunicação visual integrada à fachada e eficiência funcional.
               </p>
               <ul class="service-features">
                 <li>✓ Layout Operacional Estratégico</li>
@@ -313,7 +343,8 @@
             <div class="service-body">
               <h3 class="service-title">Consultoria & Laudos</h3>
               <p class="service-desc">
-                Análise técnica de viabilidade espacial, estudo de insolação, ventilação natural, adequação ao código de obras municipal e relatórios de otimização espacial.
+                Análise técnica de viabilidade espacial, estudo de insolação, ventilação natural, adequação ao código de
+                obras municipal e relatórios de otimização espacial.
               </p>
               <ul class="service-features">
                 <li>✓ Estudo de Viabilidade de Terrenos</li>
@@ -332,7 +363,8 @@
             <div class="service-body">
               <h3 class="service-title">Acessibilidade & Projetos Sociais</h3>
               <p class="service-desc">
-                Projetos voltados à inclusão, acessibilidade universal e apoio na reconstrução de moradias com segurança, conforto e dignidade para famílias necessitadas.
+                Projetos voltados à inclusão, acessibilidade universal e apoio na reconstrução de moradias com
+                segurança, conforto e dignidade para famílias necessitadas.
               </p>
               <ul class="service-features">
                 <li>✓ Acessibilidade Universal (NBR 9050)</li>
@@ -373,10 +405,9 @@
                 <span class="portfolio-cat">Residencial</span>
                 <h3 class="portfolio-item-title">Villa Horizon</h3>
                 <p class="portfolio-item-desc">Residência de 450m² com conceito aberto e máxima iluminação natural.</p>
-                <button class="btn btn-gold btn-sm open-modal-btn" 
-                  data-title="Villa Horizon" 
-                  data-cat="Residencial" 
-                  data-img="assets/images/residential.png" 
+                <button class="btn btn-gold btn-sm open-modal-btn" data-title="Villa Horizon" data-cat="Residencial"
+                  data-img="assets/images/residential.png" data-img-2d="assets/images/residential.png"
+                  data-homebyme-url="https://home.by.me/pt/project/82de08166d8d8a8c86cd251/projeto-residencial?open_planner=true"
                   data-desc="Projeto arquitetônico residencial com conceito aberto, integração com paisagismo natural, piscina com borda infinita e aproveitamento máximo de luz natural. Desenvolvido inteiramente em modelagem 3D executiva.">
                   Ver Detalhes
                 </button>
@@ -392,10 +423,9 @@
                 <span class="portfolio-cat">Comercial</span>
                 <h3 class="portfolio-item-title">Solaris Headquarters</h3>
                 <p class="portfolio-item-desc">Complexo corporativo sustentável com jardins verticais.</p>
-                <button class="btn btn-gold btn-sm open-modal-btn" 
-                  data-title="Solaris Headquarters" 
-                  data-cat="Comercial" 
-                  data-img="assets/images/commercial.png" 
+                <button class="btn btn-gold btn-sm open-modal-btn" data-title="Solaris Headquarters"
+                  data-cat="Comercial" data-img="assets/images/commercial.png"
+                  data-img-2d="assets/images/commercial.png" data-homebyme-url=""
                   data-desc="Projeto corporativo de 12 pavimentos focado em eficiência energética, brises metálicos na cor dourada e áreas de convivência integradas com biofilia.">
                   Ver Detalhes
                 </button>
@@ -410,11 +440,11 @@
               <div class="portfolio-overlay">
                 <span class="portfolio-cat">Impacto Social</span>
                 <h3 class="portfolio-item-title">Centro de Acolhimento</h3>
-                <p class="portfolio-item-desc">Projeto arquitetônico com acessibilidade universal e apoio a famílias.</p>
-                <button class="btn btn-gold btn-sm open-modal-btn" 
-                  data-title="Centro de Acolhimento Comunitário" 
-                  data-cat="Impacto Social" 
-                  data-img="assets/images/interior.png" 
+                <p class="portfolio-item-desc">Projeto arquitetônico com acessibilidade universal e apoio a famílias.
+                </p>
+                <button class="btn btn-gold btn-sm open-modal-btn" data-title="Centro de Acolhimento Comunitário"
+                  data-cat="Impacto Social" data-img="assets/images/interior.png"
+                  data-img-2d="assets/images/interior.png" data-homebyme-url=""
                   data-desc="Projeto de utilidade pública focado em reconstrução habitacional com segurança, rampas de acessibilidade universal (NBR 9050), conforto térmico e espaços multifuncionais de convivência.">
                   Ver Detalhes
                 </button>
@@ -430,10 +460,9 @@
                 <span class="portfolio-cat">Consultoria</span>
                 <h3 class="portfolio-item-title">Masterplan Urbanístico</h3>
                 <p class="portfolio-item-desc">Estudo conceitual e pranchas executivas de análise espacial.</p>
-                <button class="btn btn-gold btn-sm open-modal-btn" 
-                  data-title="Masterplan Urbanístico" 
-                  data-cat="Consultoria" 
-                  data-img="assets/images/consulting.png" 
+                <button class="btn btn-gold btn-sm open-modal-btn" data-title="Masterplan Urbanístico"
+                  data-cat="Consultoria" data-img="assets/images/consulting.png"
+                  data-img-2d="assets/images/consulting.png" data-homebyme-url=""
                   data-desc="Consultoria técnica elaborada para otimização de ocupação de solo urbano, acompanhada de maquete eletrônica, pranchas técnicas em CAD e parecer de viabilidade municipal.">
                   Ver Detalhes
                 </button>
@@ -457,25 +486,29 @@
           <div class="feature-box">
             <div class="feature-icon">📊</div>
             <h3>Excelência em Gestão Espacial</h3>
-            <p>Nossos projetos contam com orçamento detalhado de fases projetuais, cronograma de entregas rigoroso e alinhamento estratégico.</p>
+            <p>Nossos projetos contam com orçamento detalhado de fases projetuais, cronograma de entregas rigoroso e
+              alinhamento estratégico.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon">💻</div>
             <h3>Modelagem 3D em Alta Precisão</h3>
-            <p>Visualização fotorrealista completa do imóvel antes de qualquer tomada de decisão, evitando surpresas no desenvolvimento.</p>
+            <p>Visualização fotorrealista completa do imóvel antes de qualquer tomada de decisão, evitando surpresas no
+              desenvolvimento.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon">🌿</div>
             <h3>Sustentabilidade Racional</h3>
-            <p>Aproveitamento de orientação solar, ventilação cruzada e especificação de materiais sustentáveis para economia de energia.</p>
+            <p>Aproveitamento de orientação solar, ventilação cruzada e especificação de materiais sustentáveis para
+              economia de energia.</p>
           </div>
 
           <div class="feature-box">
             <div class="feature-icon">📜</div>
             <h3>Clareza & Segurança Jurídica</h3>
-            <p>Contratos transparentes delimitando rigorosamente o escopo projetual e consultivo, sem ambiguidades de execução de obras.</p>
+            <p>Contratos transparentes delimitando rigorosamente o escopo projetual e consultivo, sem ambiguidades de
+              execução de obras.</p>
           </div>
         </div>
       </div>
@@ -530,13 +563,16 @@
 
               <div class="form-group">
                 <label for="message">Descrição do Projeto ou Necessidade *</label>
-                <textarea id="message" name="message" rows="4" placeholder="Descreva brevemente o imóvel, metragem aproximada ou necessidades específicas do seu projeto..." required></textarea>
+                <textarea id="message" name="message" rows="4"
+                  placeholder="Descreva brevemente o imóvel, metragem aproximada ou necessidades específicas do seu projeto..."
+                  required></textarea>
                 <span class="error-msg" id="messageError">Insira detalhes sobre seu projeto.</span>
               </div>
 
               <div class="form-checkbox">
                 <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">Estou ciente de que a Vesper Arquitetura desenvolve projetos e consultorias, não executando obras físicas de construção civil. *</label>
+                <label for="terms">Estou ciente de que a Vesper Arquitetura desenvolve projetos e consultorias, não
+                  executando obras físicas de construção civil. *</label>
               </div>
               <span class="error-msg" id="termsError">Você deve confirmar a ciência sobre o escopo dos serviços.</span>
 
@@ -559,7 +595,8 @@
           <div class="contact-info-container">
             <div class="info-card">
               <h3>Informações da Empresa</h3>
-              <p class="info-intro">Estamos à disposição para transformar suas ideias em projetos arquitetônicos impecáveis.</p>
+              <p class="info-intro">Estamos à disposição para transformar suas ideias em projetos arquitetônicos
+                impecáveis.</p>
 
               <div class="info-details">
                 <div class="info-item">
@@ -574,7 +611,8 @@
                   <span class="info-icon">✉️</span>
                   <div>
                     <strong>E-mail Institucional</strong>
-                    <p>contato@vesperarquitetura.com.br</p>
+                    <!-- ADICIONE SEU E-MAIL NO mailto: ABAIXO -->
+                    <p><a href="mailto:seu-email@dominio.com.br" class="contact-link" title="Clique para enviar um e-mail">contato@vesperarquitetura.com.br</a></p>
                   </div>
                 </div>
 
@@ -582,7 +620,7 @@
                   <span class="info-icon">📞</span>
                   <div>
                     <strong>Telefone / WhatsApp</strong>
-                    <p>(11) 3456-7890 | (11) 98765-4321</p>
+                    <p><a href="https://wa.me/5511968397691" target="_blank" rel="noopener noreferrer" class="contact-link" title="Abrir WhatsApp">(11) 96839-7691</a> | (11) 3456-7890</p>
                   </div>
                 </div>
 
@@ -595,8 +633,35 @@
                 </div>
               </div>
 
+              <!-- CANAIS DE ATENDIMENTO & REDES SOCIAIS (CONTATO) -->
+              <div class="social-channels info-social">
+                <!-- WHATSAPP: Redireciona diretamente para o WhatsApp do usuário -->
+                <a href="https://wa.me/5511968397691" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp-btn" aria-label="Abrir WhatsApp" title="WhatsApp: (11) 96839-7691">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                  </svg>
+                </a>
+
+                <!-- INSTAGRAM: Espaço reservado para colocar seu link do perfil depois -->
+                <a href="https://instagram.com/SEU_PERFIL_AQUI" target="_blank" rel="noopener noreferrer" class="social-btn instagram-btn" aria-label="Perfil do Instagram" title="Instagram (Cole seu link aqui)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+
+                <!-- E-MAIL: Espaço reservado para colocar o e-mail de destino depois -->
+                <a href="mailto:seu-email@dominio.com.br" class="social-btn email-btn" aria-label="Enviar E-mail" title="E-mail (Cole seu e-mail no mailto aqui)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </a>
+              </div>
+
               <div class="impact-badge-footer">
-                ✨ Vesper Arquitetura & Design — Transformando Espaços e Vidas
+                ✨ Vesper Arquitetura — Transformando Espaços e Vidas
               </div>
             </div>
           </div>
@@ -612,11 +677,39 @@
         <div class="footer-brand">
           <a href="#inicio" class="brand-logo">
             <span class="logo-title">VESPER</span>
-            <span class="logo-subtitle">ARQUITETURA & DESIGN</span>
+            <span class="logo-subtitle">ARQUITETURA & PROJETOS</span>
           </a>
           <p class="footer-tagline">
-            Escritório especializado em planejamento, projetos arquitetônicos e consultoria espacial. Excelência estética e responsabilidade social.
+            Escritório especializado em planejamento, projetos arquitetônicos e consultoria espacial. Excelência
+            estética e responsabilidade social.
           </p>
+
+          <!-- CANAIS DE ATENDIMENTO & REDES SOCIAIS (RODAPÉ) -->
+          <div class="social-channels footer-social">
+            <!-- WHATSAPP: Redireciona diretamente para o WhatsApp do usuário -->
+            <a href="https://wa.me/5511968397691" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp-btn" aria-label="Abrir WhatsApp" title="WhatsApp: (11) 96839-7691">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </a>
+
+            <!-- INSTAGRAM: Espaço reservado para colocar seu link do perfil depois -->
+            <a href="https://instagram.com/SEU_PERFIL_AQUI" target="_blank" rel="noopener noreferrer" class="social-btn instagram-btn" aria-label="Perfil do Instagram" title="Instagram (Cole seu link aqui)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+
+            <!-- E-MAIL: Espaço reservado para colocar o e-mail de destino depois -->
+            <a href="mailto:seu-email@dominio.com.br" class="social-btn email-btn" aria-label="Enviar E-mail" title="E-mail (Cole seu e-mail no mailto aqui)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
         </div>
 
         <div class="footer-nav">
@@ -645,11 +738,12 @@
       <div class="footer-bottom">
         <div class="footer-corporate-disclaimer">
           <p>
-            <strong>Vesper Arquitetura & Design:</strong> Projetos arquitetônicos de excelência, modelos 3D executivos e planejamento de viabilidade com compromisso de transformação social.
+            <strong>Vesper Arquitetura:</strong> Projetos arquitetônicos de excelência, modelos 3D executivos e
+            planejamento de viabilidade com compromisso de transformação social.
           </p>
         </div>
         <p class="copyright">
-          &copy; 2026 Vesper Arquitetura & Design. Todos os direitos reservados.
+          &copy; 2026 Vesper Arquitetura. Todos os direitos reservados.
         </p>
       </div>
     </div>
@@ -662,18 +756,109 @@
       <div class="modal-header">
         <span class="modal-badge" id="modalCat">Categoria</span>
         <h3 class="modal-title" id="modalTitle">Título do Projeto</h3>
+
+        <!-- BARRA DE ABAS DO MODAL -->
+        <div class="modal-tabs" role="tablist" aria-label="Visualizações do Projeto">
+          <button class="modal-tab-btn active" data-tab="photo" role="tab" aria-selected="true" id="tabBtnPhoto">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            Foto / Render HD
+          </button>
+          <button class="modal-tab-btn" data-tab="plan2d" role="tab" aria-selected="false" id="tabBtn2D">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 3h18v18H3z" />
+              <path d="M3 9h18" />
+              <path d="M9 21V9" />
+              <path d="M15 9v12" />
+            </svg>
+            Planta 2D
+          </button>
+          <button class="modal-tab-btn" data-tab="model3d" role="tab" aria-selected="false" id="tabBtn3D">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M21 16.04V7.96a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 7.96v8.08a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+            Modelo 3D (HomeByMe)
+          </button>
+        </div>
       </div>
+
       <div class="modal-body">
-        <img src="" alt="" id="modalImg" class="modal-img">
+        <!-- Aba 1: Foto / Render HD -->
+        <div class="tab-pane active" id="tabPanePhoto" role="tabpanel">
+          <img src="" alt="" id="modalImg" class="modal-img">
+        </div>
+
+        <!-- Aba 2: Planta 2D -->
+        <div class="tab-pane" id="tabPane2D" role="tabpanel">
+          <div class="plan2d-container">
+            <canvas id="plan2dCanvas" class="plan2d-canvas"></canvas>
+            <div class="plan2d-info">
+              <span class="plan2d-tag">Desenho Técnico Executivo - Escala 1:50</span>
+              <p class="plan2d-text">Planta baixa cotada com especificação de zonas funcionais, acessibilidade e
+                insolação criada pelos arquitetos da Vesper.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba 3: Modelo 3D Interativo (HomeByMe / Canvas 3D Vesper) -->
+        <div class="tab-pane" id="tabPane3D" role="tabpanel">
+          <div class="homebyme-container" id="homebymeContainer">
+            <div class="homebyme-spinner" id="homebymeSpinner" style="display: none;">
+              <div class="spinner-gold"></div>
+              <span>Carregando maquete 3D interativa do HomeByMe...</span>
+            </div>
+
+            <!-- Player 3D Iframe Embed (Exibe DIRETO no modal) -->
+            <iframe id="homebymeIframe" class="homebyme-iframe" src="" allowfullscreen frameborder="0" scrolling="no"
+              allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; xr-spatial-tracking"
+              style="display: none;"></iframe>
+
+
+            <!-- Visualizador 3D Nativo Canvas Vesper (Exibido se não houver link) -->
+            <div class="fallback-3d-wrapper" id="fallback3DWrapper">
+              <canvas id="canvas3DFallback" class="canvas-3d-fallback"></canvas>
+
+              <div class="fallback-3d-overlay">
+                <div class="fallback-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                  </svg>
+                  <span>Maquete Eletrônica 3D Interativa Vesper</span>
+                </div>
+
+                <p class="fallback-hint">🖱️ Clique e arraste para girar a casa em 360° | Scroll para zoom</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <p id="modalDesc" class="modal-desc">Descrição detalhada do projeto...</p>
       </div>
+
       <div class="modal-footer">
         <button class="btn btn-gold btn-sm" id="modalCtaBtn">Solicitar Orçamento Deste Serviço</button>
       </div>
     </div>
   </div>
 
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+  <a href="https://wa.me/5511968397691" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Falar no WhatsApp" title="Falar via WhatsApp: (11) 96839-7691">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+    <span class="whatsapp-float-tooltip">Falar no WhatsApp</span>
+  </a>
+
   <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
+
 </html>
