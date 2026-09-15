@@ -1334,6 +1334,7 @@ html[data-theme="dark"] .dark-visual {
   text-align: center;
   font-size: 0.85rem;
   font-weight: 600;
+  margin-top: 1.75rem;
 }
 
 /* ==========================================================================
@@ -1835,12 +1836,12 @@ html[data-theme="dark"] .dark-visual {
   box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
 }
 
-/* Hover E-mail */
-.social-btn.email-btn:hover {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
-  color: var(--color-navy-deep);
-  box-shadow: 0 8px 20px rgba(199, 161, 74, 0.4);
+/* Hover Google Maps */
+.social-btn.maps-btn:hover {
+  background: #EA4335;
+  border-color: #EA4335;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(234, 67, 53, 0.4);
 }
 
 .contact-link {
