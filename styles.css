@@ -76,7 +76,9 @@ html[data-theme="dark"] {
    RESET & ESTILOS BASE
    ========================================================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -110,7 +112,12 @@ body {
   display: block;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--text-heading);
   font-weight: 700;
@@ -218,18 +225,21 @@ img {
   justify-content: space-between;
   padding: 2px;
   border: 2px solid #1A2332;
-  background-color: #4C7EAA; /* Sol / Nuvem no modo claro */
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 6px rgba(0,0,0,0.15);
+  background-color: #4C7EAA;
+  /* Sol / Nuvem no modo claro */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease;
   overflow: hidden;
 }
 
 html[data-theme="dark"] .toggle-pill {
-  background-color: #1E2530; /* Lua / Estrelas no modo escuro */
+  background-color: #1E2530;
+  /* Lua / Estrelas no modo escuro */
   border-color: #CBD5E1;
 }
 
-.light-visual, .dark-visual {
+.light-visual,
+.dark-visual {
   position: absolute;
   top: 0;
   left: 0;
@@ -252,7 +262,7 @@ html[data-theme="dark"] .toggle-pill {
   position: absolute;
   left: 3px;
   bottom: 2px;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
 }
 
 .sun-circle {
@@ -277,7 +287,7 @@ html[data-theme="dark"] .toggle-pill {
   height: 20px;
   position: absolute;
   left: 5px;
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
 }
 
 .stars-group {
@@ -294,9 +304,29 @@ html[data-theme="dark"] .toggle-pill {
   border-radius: 50%;
 }
 
-.star-1 { width: 3px; height: 3px; top: 2px; right: 4px; opacity: 0.9; }
-.star-2 { width: 4px; height: 4px; top: 10px; right: 10px; opacity: 0.95; }
-.star-3 { width: 3px; height: 3px; top: 14px; right: 2px; opacity: 0.85; }
+.star-1 {
+  width: 3px;
+  height: 3px;
+  top: 2px;
+  right: 4px;
+  opacity: 0.9;
+}
+
+.star-2 {
+  width: 4px;
+  height: 4px;
+  top: 10px;
+  right: 10px;
+  opacity: 0.95;
+}
+
+.star-3 {
+  width: 3px;
+  height: 3px;
+  top: 14px;
+  right: 2px;
+  opacity: 0.85;
+}
 
 html[data-theme="dark"] .light-visual {
   opacity: 0;
@@ -398,6 +428,25 @@ html[data-theme="dark"] .dark-visual {
 }
 
 .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo-icon-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(199, 161, 74, 0.35));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo:hover .logo-icon-img {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.logo-text-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -539,8 +588,13 @@ html[data-theme="dark"] .dark-visual {
 }
 
 @keyframes heroZoom {
-  0% { transform: scale(1.05); }
-  100% { transform: scale(1.15); }
+  0% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1.15);
+  }
 }
 
 .hero-overlay {
@@ -549,12 +603,10 @@ html[data-theme="dark"] .dark-visual {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(11, 29, 58, 0.85) 0%,
-    rgba(6, 18, 38, 0.8) 60%,
-    rgba(15, 23, 42, 0.75) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(11, 29, 58, 0.85) 0%,
+      rgba(6, 18, 38, 0.8) 60%,
+      rgba(15, 23, 42, 0.75) 100%);
   pointer-events: none;
 }
 
@@ -975,12 +1027,10 @@ html[data-theme="dark"] .dark-visual {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to top,
-    rgba(11, 29, 58, 0.95) 0%,
-    rgba(11, 29, 58, 0.4) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to top,
+      rgba(11, 29, 58, 0.95) 0%,
+      rgba(11, 29, 58, 0.4) 60%,
+      transparent 100%);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -1239,7 +1289,7 @@ html[data-theme="dark"] .dark-visual {
 }
 
 .form-group.error .error-msg,
-.form-checkbox.error + .error-msg {
+.form-checkbox.error+.error-msg {
   display: block;
 }
 
@@ -1568,8 +1618,15 @@ html[data-theme="dark"] .dark-visual {
 }
 
 @keyframes fadeInTab {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-img {
@@ -1640,19 +1697,23 @@ html[data-theme="dark"] .dark-visual {
   .modal-overlay {
     padding: 0.5rem;
   }
+
   .modal-card {
     width: 100%;
     max-height: 96vh;
   }
+
   .modal-body {
     padding: 1rem;
     max-height: calc(96vh - 160px);
   }
+
   .modal-img,
   .plan2d-canvas {
     height: 320px;
     max-height: 45vh;
   }
+
   .homebyme-container {
     height: 400px;
     min-height: 320px;
@@ -1663,7 +1724,10 @@ html[data-theme="dark"] .dark-visual {
 
 .homebyme-spinner {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1686,7 +1750,9 @@ html[data-theme="dark"] .dark-visual {
 }
 
 @keyframes spinGold {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .homebyme-iframe {
@@ -1906,9 +1972,11 @@ html[data-theme="dark"] .dark-visual {
   0% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
   }
+
   70% {
     box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
@@ -1922,5 +1990,3 @@ html[data-theme="dark"] .dark-visual {
     height: 50px;
   }
 }
-
-
